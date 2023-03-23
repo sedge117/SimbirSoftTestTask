@@ -6,7 +6,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.*;
 
+
 import static com.codeborne.selenide.Selenide.open;
+
 
 @Test(testName = "Тесты совершения покупки")
 public class BuyTests {

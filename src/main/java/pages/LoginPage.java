@@ -2,9 +2,11 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import enums.ErrorLabelEnum;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.byId;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -46,6 +48,14 @@ public class LoginPage {
             " “Epic sadface: Username and password do not match any user in this service”")
     public LoginPage checkError(){
         errorLabel.shouldBe(Condition.visible);
+        return this;
+    }
+
+    @Step("Страница Авторизации: Появляется сообщение:" +
+            " “Epic sadface: Username and password do not match any user in this service”")
+    public LoginPage checkError2(ErrorLabelEnum errorLabelEnum){
+        if(errorLabelEnum.isDisplayed())
+            $(byText(errorLabelEnum.getLabel())).shouldBe(Condition.visible);
         return this;
     }
 }
